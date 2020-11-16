@@ -1,0 +1,31 @@
+<button (click)="back()">Back</button>
+<div class="github_user_info p-1" *ngIf="userInfo.message !== 'Not Found'">
+    <a [href]="userInfo.html_url" target="_blank"><h2>{{ userInfo.login }}</h2></a>
+    <div class="github_user_info_container">
+        <img [src]="userInfo.avatar_url" class="github_user_avatar" alt="">
+        <div class="github_user_name p-1">
+            <h3>{{ userInfo.name }}</h3>
+            <div>
+                {{ userInfo.type }}
+            </div>
+        </div>
+    </div>
+    <hr>
+    <h3 class="pb-1">Organizations</h3>
+    <div *ngFor="let userOrg of userOrgs | slice:0:3; let i = index;" class="github_user_orgs">
+        <img [src]="userOrg.avatar_url" alt="userOrg.avatar_url" class="github_user_org_avatar">
+        <a href="https://github.com/{{userOrg.login}}" target="_blank" class="p-1">{{userOrg.login}}</a>
+    </div>
+    <div *ngIf="!userOrgs.length" class="err_text">No organizations found</div>
+
+    <hr>
+
+    <div class="github_user_repos">
+        <h3 class="pb-1">User Repos</h3>
+        <div *ngFor="let githubUserRepo of githubUserRepos | slice:0:3;" class="mb-1">
+            <a [href]="githubUserRepo.html_url" target="_blank" [textContent]="githubUserRepo.name"></a>
+        </div>
+        <div *ngIf="!githubUserRepos.length" class="err_text">No repositories found</div>
+    </div>
+</div>
+

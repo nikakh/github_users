@@ -1,0 +1,35 @@
+<div class="m-1">
+    <div class="search_container">
+        <input [(ngModel)]="searchText" placeholder="search text goes here">
+        <button (click)="search(null)">
+            Search
+        </button>
+        <button (click)="clear()">
+            X
+        </button>
+        <div *ngIf="searchedItems" class="searched_items">
+            <div *ngFor="let searchedItem of searchedItems" class="m-1">
+                <span class="m-1" [textContent]="searchedItem" (click)="search(searchedItem)"></span>
+            </div>
+        </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+        <h2>Github most popular users</h2>
+        <div class="button_wrapper">
+            <button class="m-1 style_buttons" (click)="makeInline()">Inline</button>
+            <button class="m-1 style_buttons" (click)="makeIntoBlocks()">blocks</button>
+        </div>
+
+    </div>
+</div>
+
+
+<div [ngClass]="inline ? 'inline' : 'blocks'"> 
+    <div *ngFor="let githubUser of githubUsers" [ngClass]="inline ? 'inline_width' : 'blocks_width'">
+        <app-github-user [githubUser]="githubUser"></app-github-user>
+    </div>
+    <!-- რო არ მოდის არაფერი -->
+    <div *ngIf="!githubUsers.length">
+        No user found
+    </div>
+</div>

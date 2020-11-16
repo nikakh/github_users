@@ -1,0 +1,17 @@
+<div class="github_user p-1 m-1">
+    <div class="github_user_avatar">
+        <img [src]="githubUser.avatar_url" [alt]="githubUser.avatar_url" >
+    </div>
+    <div class="p-1 github_user_info">
+        <a routerLink="/{{githubUser.login}}" [textContent]="githubUser.login"></a>
+        <p [textContent]="githubUser.type"></p>
+    </div>
+    <div class="p-1 github_user_repos">
+        <h3 class="pb-1">User Repos</h3>
+        <div *ngFor="let githubUserRepo of githubUserRepos | slice:0:3;" class="mb-1">
+            <a [href]="githubUserRepo.html_url" target="_blank" [textContent]="githubUserRepo.name"></a>
+        </div>
+        <div *ngIf="!githubUserRepos.length" class="err_text">No repositories found</div>
+    </div>
+</div>
+        

@@ -1,0 +1,43 @@
+.github_user_info {
+    margin: 0 auto;
+    width: 600px;
+    border: 1px solid black;
+
+    .github_user_info_container {
+        display: flex;
+
+        .github_user_avatar {
+            width: 150px;
+        }
+    
+        .github_user_name {
+            display: inline;
+        }
+    }
+
+    .github_user_orgs {
+        display: flex;
+
+        .github_user_org_avatar {
+            width: 60px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1366px) {
+
+}
+
+@media only screen and (max-width: 980px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 400px) {
+    .github_user_info {
+        width: 320px;  
+    }
+}
